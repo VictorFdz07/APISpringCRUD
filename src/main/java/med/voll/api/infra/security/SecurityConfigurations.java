@@ -25,8 +25,8 @@ public class SecurityConfigurations {
         return httpSecurity.csrf(csrf -> csrf.disable())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Le indicamos a spring el tipo de sesion
                 .authorizeRequests()
-                .requestMatchers(HttpMethod.POST, "/login")
-                .permitAll()
+                .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                .requestMatchers("/swagger-ui.html", "/v3/api-docs/**","/swagger-ui/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
